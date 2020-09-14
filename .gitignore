@@ -1,0 +1,11 @@
+/vendor
+/.composer
+/.idea
+/workplace
+/templates
+composer.phar
+Homestead.json
+Homestead.yaml
+.env
+.phpunit.result.cache
+*.zip

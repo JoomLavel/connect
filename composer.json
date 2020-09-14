@@ -1,0 +1,6 @@
+{
+    "require": {
+        "symfony/console": "^5.1",
+        "nelexa/zip": "^3.3"
+    }
+}
