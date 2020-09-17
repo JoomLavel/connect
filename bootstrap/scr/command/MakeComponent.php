@@ -16,26 +16,29 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
-class MakeComponent extends Command
+
+class MakeComponent extends GenericCommand
 {
+
     const NAME = 'JoomLavel-connect';
+    const TITLE = 'Component Creator';
+    const STEPS = 4;
+
+    private $steps;
 
     protected static $defaultName = 'make:component';
-    protected $io;
     protected $componentDirectory;
 
-    private $componentGenerator;
+    public $componentGenerator;
 
-    private $verbosityDescription;
-    private $verbosity;
 
     public function __construct(string $dir)
     {
-        parent::__construct();
+        parent::__construct($dir);
 
         $this->componentGenerator = new ComponentGenerator($dir);
+        $this->steps = $this::STEPS;
     }
 
     protected function configure()
@@ -54,64 +57,46 @@ class MakeComponent extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->io = new SymfonyStyle($input, $output);
-        $this->verbosity = $output->isVerbose();
+        $this->showIntro($input, $output);
 
-        $this->io->title('Component Creator');
+        !$input->getOption('zip') ?: $this->steps++;
 
-        if ($input->getArgument('name') == true) {
-            $name = $input->getArgument('name');
-
-        } else {
-            $name = $this::NAME;
-        }
+        $name = $input->getArgument('name') == true ? $input->getArgument('name') : $this::NAME;
         $output->writeln('Create component with name: ' . $name);
-
         $this->createComponent($name);
 
         if ($input->getOption('zip') == true && isset($this->componentDirectory)) {
             $zipGenerator = new ZipGenerator();
-            $this->verbosityDescription .= "\n". count($zipGenerator->zipDirectory($name, $this->componentDirectory), true)." files zipped";
+            $this->addVerbosityDescription(count($zipGenerator->zipDirectory($name, $this->componentDirectory), true) . " files zipped");
+            $this->addCommentAndProgressBar("zipDirectory()");
+            $note = " and zipped";
+        } else {
+            $note = ".";
         }
 
-        if ($this->verbosity) {
-            $this->io->note($this->verbosityDescription);
-        }
+        $this->showEndNote($output);
 
         $output->writeln("");
-        $output->write('Component ' . $name . ' successfully created');
-        if ($input->getOption('zip') == true && isset($this->componentDirectory)) {
-            $output->write(' and zipped.');
-        }else{
-            $output->write('.');
-        }
+        $output->write('Component ' . $name . ' successfully created' . $note);
 
         return Command::SUCCESS;
-        // return Command::FAILURE;
     }
 
     private function createComponent(string $name)
     {
-        $this->io->progressStart($this->componentGenerator->getSteps());
-        if ($this->verbosity) {
-            $this->io->note("getSteps()");
-        }
+        $this->addProgressBar($this->steps);
 
+        $this->addCommentAndProgressBar("setComponentName(" . $name . ")");
         $this->componentGenerator->setComponentName($name);
-        $this->io->progressAdvance();
-        if ($this->verbosity) {
-            $this->io->note("setComponentName(" . $name . ")");
-        }
-        $this->verbosityDescription .= $this->componentGenerator->copyTemplateToDirectory();
+
+        $this->addCommentAndProgressBar("copyTemplateToDirectory()");
+        $this->addVerbosityDescription($this->componentGenerator->copyTemplateToDirectory());
         $this->componentDirectory = $this->componentGenerator->getComponentDirectory();
-        $this->io->progressAdvance();
-        if ($this->verbosity) {
-            $this->io->note("copyTemplateToDirectory()");
-        }
+
+        $this->addCommentAndProgressBar("cleanDirectory()");
         $this->componentGenerator->cleanDirectory();
-        if ($this->verbosity) {
-            $this->io->note("cleanDirectory()");
-        }
-        $this->io->progressAdvance();
+
+        $this->addCommentAndProgressBar("finish()");
     }
+
 }
