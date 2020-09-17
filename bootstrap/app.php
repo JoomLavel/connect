@@ -6,6 +6,7 @@
  * Time: 18:42
  */
 
+require __DIR__ . '/scr/command/GenericCommand.php';
 require __DIR__ . '/scr/command/MakeComponent.php';
 require __DIR__ . '/scr/service/ComponentGenerator.php';
 require __DIR__ . '/scr/service/ZipGenerator.php';

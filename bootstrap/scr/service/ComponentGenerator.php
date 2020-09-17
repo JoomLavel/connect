@@ -14,8 +14,6 @@ class ComponentGenerator
     const TEMPLATE_DIR = 'templates';
     const WORKPLACE_DIR = 'workplace';
 
-    private $steps = 20;
-
     private $folderName;
     protected $dir;
     private $componentDirectory;
@@ -25,14 +23,6 @@ class ComponentGenerator
         $this->dir = $dir;
 
         //check if template folder exists
-    }
-
-    /**
-     * @return int
-     */
-    public function getSteps(): int
-    {
-        return $this->steps;
     }
 
     /**
