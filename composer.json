@@ -1,6 +1,24 @@
 {
+    "name": "joomlavel/connect",
+    "description": "Package for Joomla component RAD generator, including templates: none, dummy, hello world and JoomLavel API Connect",
+    "type": "package",
     "require": {
+        "php": ">=5.4.0"
         "symfony/console": "^5.1",
-        "nelexa/zip": "^3.3"
+        "nelexa/zip": "^3.3"        
+    },
+    "license": "mit",
+    "authors": [
+        {
+            "name": "Jakub Walczak",
+            "email": "walctzak@getit-berlin.de",
+            "homepage": "https://getit-berlin.de"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "JoomLavel\\Connect\\": "src/"
+        }
     }
 }
