@@ -4,8 +4,47 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1b42cd2be18e1cdbaf2a749b1a572be",
+    "content-hash": "e939936fb3d426299b629a7ee52178a4",
     "packages": [
+        {
+            "name": "joomlavel/rad",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JoomLavel/rad.git",
+                "reference": "545ad25c20c9ad3110b9d7951350f1826a704099"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JoomLavel/rad/zipball/545ad25c20c9ad3110b9d7951350f1826a704099",
+                "reference": "545ad25c20c9ad3110b9d7951350f1826a704099",
+                "shasum": ""
+            },
+            "require": {
+                "nelexa/zip": "^3.3",
+                "php": ">=5.4.0",
+                "symfony/console": "^5.1"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "JoomLavel\\Rad\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "mit"
+            ],
+            "authors": [
+                {
+                    "name": "Jakub Walczak",
+                    "email": "walctzak@getit-berlin.de",
+                    "homepage": "https://getit-berlin.de"
+                }
+            ],
+            "description": "RAD Tool for JoomLavel ecosystem",
+            "time": "2020-09-21T16:37:22+00:00"
+        },
         {
             "name": "nelexa/zip",
             "version": "3.3.3",
