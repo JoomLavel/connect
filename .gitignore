@@ -1,6 +1,7 @@
-/vendor
 /.composer
 /.idea
+/.github
+/vendor
 /storage
 composer.phar
 Homestead.json
