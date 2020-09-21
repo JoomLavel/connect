@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JoomLavel/rad.git",
-                "reference": "545ad25c20c9ad3110b9d7951350f1826a704099"
+                "reference": "7ee96190760fa5337b5f96beaf4f044d005401cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JoomLavel/rad/zipball/545ad25c20c9ad3110b9d7951350f1826a704099",
-                "reference": "545ad25c20c9ad3110b9d7951350f1826a704099",
+                "url": "https://api.github.com/repos/JoomLavel/rad/zipball/7ee96190760fa5337b5f96beaf4f044d005401cd",
+                "reference": "7ee96190760fa5337b5f96beaf4f044d005401cd",
                 "shasum": ""
             },
             "require": {
@@ -38,12 +38,12 @@
             "authors": [
                 {
                     "name": "Jakub Walczak",
-                    "email": "walctzak@getit-berlin.de",
+                    "email": "walczak@getit-berlin.de",
                     "homepage": "https://getit-berlin.de"
                 }
             ],
             "description": "RAD Tool for JoomLavel ecosystem",
-            "time": "2020-09-21T16:37:22+00:00"
+            "time": "2020-09-21T18:19:28+00:00"
         },
         {
             "name": "nelexa/zip",
