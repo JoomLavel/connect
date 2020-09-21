@@ -11,6 +11,8 @@ use Symfony\Component\Console\Application;
 
 $application = new Application();
 
+//ToDo: das setzen der MakeComponent sollte eigentlich ins RAD, fall weitere Commandos kommen
+
 $MakeComponent = new MakeComponent($config);
 
 $application->add($MakeComponent );

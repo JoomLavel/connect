@@ -2,7 +2,6 @@
 /.idea
 /.github
 /vendor
-/storage
 composer.phar
 Homestead.json
 Homestead.yaml
