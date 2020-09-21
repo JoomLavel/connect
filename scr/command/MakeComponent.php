@@ -33,11 +33,11 @@ class MakeComponent extends GenericCommand
     public $componentGenerator;
 
 
-    public function __construct(string $dir)
+    public function __construct(array $config)
     {
-        parent::__construct($dir);
+        parent::__construct();
 
-        $this->componentGenerator = new ComponentGenerator($dir);
+        $this->componentGenerator = new ComponentGenerator($config);
         $this->steps = $this::STEPS;
     }
 
