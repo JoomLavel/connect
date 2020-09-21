@@ -10,19 +10,25 @@ namespace App\Service;
 
 class ComponentGenerator
 {
-    const DEFAULT_TEMPLATE = 'joomlavelcnct';
-    const TEMPLATE_DIR = 'templates';
-    const WORKPLACE_DIR = 'workplace';
-
     private $folderName;
     protected $dir;
+    protected $defaultTemplate;
+    protected $templateDirectory;
+    protected $workplaceDirectory;
     private $componentDirectory;
 
-    public function __construct(string $dir)
+    /**
+     * ComponentGenerator constructor.
+     * @param array $config
+     */
+    public function __construct(array $config)
     {
-        $this->dir = $dir;
+        $this->dir = $config['general']['path'];
+        $this->defaultTemplate = $config['rad']['templates']['default'];
+        $this->templateDirectory = $config['rad']['templates']['path'];
+        $this->workplaceDirectory = $config['rad']['workplace']['path'];
 
-        //check if template folder exists
+        //TODO: check if template folder exists
     }
 
     /**
@@ -43,20 +49,19 @@ class ComponentGenerator
     public function copyTemplateToDirectory()
     {
         $seperator = '\\';
-        $dirFrom = $this->dir . $seperator . '..' . $seperator . $this::TEMPLATE_DIR;
-        $dirTo = $this->dir . $seperator . '..' . $seperator . $this::WORKPLACE_DIR;
+        $dirFrom = $this->dir . $seperator . '..' . $seperator . $this->templateDirectory;
+        $dirTo = $this->dir . $seperator . '..' . $seperator . $this->workplaceDirectory;
         $command = "Xcopy /E /I ";
 
         $this->componentDirectory = $dirTo . $seperator . $this->folderName;
 
-        $finalCommand = $command . $dirFrom . $seperator . $this::DEFAULT_TEMPLATE . " " . $this->componentDirectory;
+        $finalCommand = $command . $dirFrom . $seperator . $this->defaultTemplate . " " . $this->componentDirectory;
 
 
         return exec($finalCommand);
     }
 
     /**
-     * @param string $name
      * @return mixed
      */
     public function cleanDirectory()

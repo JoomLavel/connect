@@ -17,5 +17,9 @@ define('JOOMLAVEL_START', microtime(true));
 
 require __DIR__.'/vendor/autoload.php';
 
+
+/** @var array $config contains configuration*/
+$config = require_once __DIR__.'/config/app.php';
+
 $app = require_once __DIR__.'/bootstrap/app.php';
 

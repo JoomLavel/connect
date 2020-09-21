@@ -1,8 +1,7 @@
 /vendor
 /.composer
 /.idea
-/workplace
-/templates
+/storage
 composer.phar
 Homestead.json
 Homestead.yaml
