@@ -8,7 +8,6 @@
         "nelexa/zip": "^3.3",
         "joomlavel/rad": "^1.0",
         "joomlavel/templates": "^1.0",
-        "twbs/bootstrap": "~3.3",
         "slowprog/composer-copy-file": "~0.3"
     },
     "license": "mit",
@@ -25,9 +24,6 @@
             "JoomLavel\\Connect\\": "src/"
         }
     },
-    "require":{
-
-    },
     "scripts": {
         "post-install-cmd": [
             "SlowProg\\CopyFile\\ScriptHandler::copy"
@@ -38,7 +34,8 @@
     },
     "extra": {
         "copy-file": {
-            "vendor/joomlavel/templates/storage/templates/": "storage/templates/"
+            "vendor/joomlavel/templates/storage/templates/": "storage/templates/",
+            "vendor/joomlavel/rad/JoomLavel": "JoomLavel"
         }
     }
 }
