@@ -6,7 +6,10 @@
         "php": ">=5.4.0",
         "symfony/console": "^5.1",
         "nelexa/zip": "^3.3",
-        "joomlavel/rad": "^1.0"
+        "joomlavel/rad": "^1.0",
+        "joomlavel/templates": "^1.0",
+        "twbs/bootstrap": "~3.3",
+        "slowprog/composer-copy-file": "~0.3"
     },
     "license": "mit",
     "authors": [
@@ -20,6 +23,22 @@
     "autoload": {
         "psr-4": {
             "JoomLavel\\Connect\\": "src/"
+        }
+    },
+    "require":{
+
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "SlowProg\\CopyFile\\ScriptHandler::copy"
+        ],
+        "post-update-cmd": [
+            "SlowProg\\CopyFile\\ScriptHandler::copy"
+        ]
+    },
+    "extra": {
+        "copy-file": {
+            "vendor/joomlavel/templates/storage/templates/": "storage/templates/"
         }
     }
 }
